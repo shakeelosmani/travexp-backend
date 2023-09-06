@@ -2,6 +2,8 @@ import { join } from 'path';
 import AutoLoad, {AutoloadPluginOptions} from '@fastify/autoload';
 import { FastifyPluginAsync, FastifyServerOptions } from 'fastify';
 import cors from '@fastify/cors';
+import swagger from '@fastify/swagger';
+import swaggerUi from '@fastify/swagger-ui';
 
 export interface AppOptions extends FastifyServerOptions, Partial<AutoloadPluginOptions> {
 
@@ -18,6 +20,23 @@ const app: FastifyPluginAsync<AppOptions> = async (
   // Place here your custom code!
   void fastify.register(cors, {
     origin: true
+  })
+
+  void fastify.register(swagger, {
+    swagger: {
+      info: {
+        title: 'Travelexp API',
+        description: 'Travelexp API',
+        version: '0.1.0'
+      },
+      host: 'localhost:8200',
+      schemes: ['http'],
+    },
+    mode: 'dynamic'
+  })
+
+  void fastify.register(swaggerUi, {
+    routePrefix: '/docs',
   })
 
   // Do not touch the following lines
