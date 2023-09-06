@@ -6,6 +6,6 @@ CREATE TABLE `travelxp`.`users` (
   `lastName` VARCHAR(45) NULL,
   `avatar` VARCHAR(200) NULL,
   `phoneNumber` VARCHAR(13) NULL,
-  `emailVerified` BINARY NULL DEFAULT 0,
+  `emailVerified` BOOLEAN NULL DEFAULT 0,
   PRIMARY KEY (`userId`),
   INDEX `uid` (`email` ASC, `uid` ASC) VISIBLE);
