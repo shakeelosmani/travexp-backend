@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: travelxp
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: randompassword
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    
+    
